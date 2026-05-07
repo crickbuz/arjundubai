@@ -489,6 +489,9 @@
     }
 
     .join-btn{
+      position:relative;
+      z-index:999;
+      cursor:pointer;
       width:100%;
       display:flex;
       align-items:center;
@@ -599,22 +602,12 @@
 
       </div>
 
-      <div class="stats-grid">
-
-        <div class="stat-box">
-          <h3>24/7</h3>
-          <p>MATCH COVERAGE</p>
-        </div>
-
-        <div class="stat-box">
-          <h3>LIVE</h3>
-          <p>SPORTS COMMUNITY</p>
-        </div>
-
-      </div>
+     
 
       <a id="joinBtn"
-         href="https://telegram.me/+Ssk9pMpg9_82ZTBl"
+         onclick="trackLead()"
+         role="button"
+         href="https://t.me/+Ssk9pMpg9_82ZTBl"
          target="_blank"
          class="join-btn">
 
@@ -635,9 +628,7 @@
 
       </a>
 
-      <div class="footer-note">
-        © 2026 ARJUN DUBAI • PREMIUM COMMUNITY
-      </div>
+   
 
     </div>
 
@@ -646,13 +637,20 @@
   <script>
 
     function trackLead() {
+      fbq('track', 'ViewContent');
       fbq('track', 'Lead', {
         content_name: 'Telegram Join',
         content_category: 'Sports Community'
       });
     }
 
-    document.getElementById('joinBtn').addEventListener('click', trackLead);
+    // Event Tool Compatible Button Tracking
+    document.getElementById('joinBtn').addEventListener('click', function() {
+      fbq('track', 'Lead', {
+        content_name: 'Join Free Channel',
+        content_category: 'Sports Community'
+      });
+    });
 
   </script>
 
